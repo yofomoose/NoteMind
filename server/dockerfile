@@ -1,0 +1,22 @@
+# Базовый образ Node.js
+FROM node:18-alpine
+
+# Создание рабочей директории
+WORKDIR /app
+
+# Установка зависимостей
+COPY package*.json ./
+RUN npm install
+
+# Копирование исходного кода
+COPY . .
+
+# Создание директории для загрузок
+RUN mkdir -p uploads
+RUN mkdir -p logs
+
+# Экспорт порта
+EXPOSE 5000
+
+# Запуск приложения
+CMD ["npm", "start"]

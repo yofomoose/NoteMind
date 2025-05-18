@@ -1,0 +1,22 @@
+# Базовый образ Node.js для разработки
+FROM node:18-alpine
+
+# Создание рабочей директории
+WORKDIR /app
+
+# Установка зависимостей для разработки
+COPY package*.json ./
+RUN npm install
+
+# Установка nodemon для горячей перезагрузки
+RUN npm install -g nodemon
+
+# Создание директории для загрузок
+RUN mkdir -p uploads
+RUN mkdir -p logs
+
+# Экспорт порта
+EXPOSE 5000
+
+# Запуск в режиме разработки
+CMD ["npm", "run", "dev"]

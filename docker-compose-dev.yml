@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # MongoDB сервис
+  mongodb:
+    image: mongo:latest
+    container_name: notemind-mongodb-dev
+    restart: unless-stopped
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=notemind
+    ports:
+      - "27017:27017"
+    networks:
+      - notemind-network-dev
+
+  # Redis сервис (для кэширования и веб-сокетов)
+  redis:
+    image: redis:alpine
+    container_name: notemind-redis-dev
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - notemind-network-dev
+
+  # Серверная часть приложения в режиме разработки
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: notemind-server-dev
+    restart: unless-stopped
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+      - redis
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/notemind
+      - JWT_SECRET=dev_jwt_secret_key
+      - JWT_EXPIRE=30d
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SOCKET_CORS_ORIGIN=http://localhost:3000
+    command: npm run dev
+    networks:
+      - notemind-network-dev
+
+  # Клиентская часть приложения в режиме разработки
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: notemind-client-dev
+    restart: unless-stopped
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    command: npm start
+    networks:
+      - notemind-network-dev
+
+# Определение томов
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# Определение сети
+networks:
+  notemind-network-dev:
+    driver: bridge

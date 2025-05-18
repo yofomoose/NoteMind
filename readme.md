@@ -35,7 +35,59 @@ NoteMind - современное веб-приложение для созда�
 - MongoDB
 - Redis (опционально)
 
-## Установка и запуск
+## Запуск с помощью Docker
+
+### Требования
+- Docker
+- Docker Compose
+
+### Запуск в режиме разработки
+
+```bash
+# Запуск с помощью Makefile
+make dev
+
+# Или напрямую с помощью Docker Compose
+docker-compose -f docker-compose.dev.yml up
+```
+
+### Запуск в production режиме
+
+```bash
+# Запуск с помощью Makefile
+make prod
+
+# Или напрямую с помощью Docker Compose
+docker-compose up
+```
+
+### Остановка контейнеров
+
+```bash
+# Для разработки
+make dev-down
+
+# Для production
+make prod-down
+```
+
+### Другие полезные команды
+
+```bash
+# Просмотр логов
+make logs
+
+# Пересборка контейнеров
+make rebuild
+
+# Удаление всех данных
+make clean
+
+# Список всех доступных команд
+make help
+```
+
+## Ручная установка
 
 ### Требования
 - Node.js 18.x или выше
@@ -43,6 +95,7 @@ NoteMind - современное веб-приложение для созда�
 - npm 8.x или выше
 
 ### Установка
+
 1. Клонировать репозиторий:
 ```bash
 git clone https://github.com/yourusername/notemind.git
@@ -77,9 +130,64 @@ npm run server
 npm run client
 ```
 
-## Разработка
+## Структура проекта
 
-Для подробной информации о процессе разработки смотрите документацию в папках `client` и `server`.
+```
+notemind/
+│
+├── client/                       # Фронтенд приложения
+│   ├── public/                   # Публичные статические файлы
+│   │   ├── index.html            # Главная HTML страница
+│   │   └── favicon.ico           # Иконка приложения
+│   │
+│   ├── src/                      # Исходный код React
+│   │   ├── assets/               # Изображения, шрифты и другие ресурсы
+│   │   │
+│   │   ├── components/           # Компоненты React
+│   │   │   ├── common/           # Общие компоненты UI
+│   │   │   ├── editor/           # Компоненты редактора заметок
+│   │   │   └── sidebar/          # Компоненты боковой панели
+│   │   │
+│   │   ├── contexts/             # React контексты
+│   │   ├── hooks/                # Пользовательские хуки React
+│   │   ├── pages/                # Страницы приложения
+│   │   ├── services/             # Сервисы для работы с API
+│   │   ├── utils/                # Утилиты и вспомогательные функции
+│   │   │
+│   │   ├── App.js                # Основной компонент приложения
+│   │   └── index.js              # Точка входа React
+│   │
+│   ├── Dockerfile                # Dockerfile для production
+│   ├── Dockerfile.dev            # Dockerfile для разработки
+│   └── package.json              # Зависимости для фронтенда
+│
+├── server/                       # Бэкенд приложения
+│   ├── config/                   # Конфигурационные файлы
+│   ├── controllers/              # Контроллеры для обработки запросов
+│   ├── middleware/               # Промежуточное ПО Express
+│   ├── models/                   # Модели MongoDB
+│   ├── routes/                   # Маршруты API
+│   ├── services/                 # Сервисы
+│   ├── utils/                    # Утилиты сервера
+│   │
+│   ├── Dockerfile                # Dockerfile для production
+│   ├── Dockerfile.dev            # Dockerfile для разработки
+│   ├── app.js                    # Конфигурация приложения
+│   ├── server.js                 # Точка входа сервера
+│   └── package.json              # Зависимости для бэкенда
+│
+├── shared/                       # Общие ресурсы для фронтенда и бэкенда
+│   ├── constants.js              # Общие константы
+│   └── types.js                  # Общие типы данных
+│
+├── docker-compose.yml            # Docker Compose для production
+├── docker-compose.dev.yml        # Docker Compose для разработки
+├── Makefile                      # Makefile для управления проектом
+├── .env.example                  # Пример конфигурации окружения
+├── .gitignore                    # Игнорируемые Git файлы
+├── package.json                  # Корневой package.json
+└── README.md                     # Документация проекта
+```
 
 ## Лицензия
 
