@@ -1,0 +1,154 @@
+/* Стили для страницы SettingsPage */
+
+.settings-page {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.settings-page-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-color: var(--color-background);
+  padding: 2rem;
+}
+
+.settings-page-header {
+  margin-bottom: 2rem;
+}
+
+.settings-page-header h1 {
+  margin-top: 0.5rem;
+  font-size: 1.75rem;
+  color: var(--color-text-dark);
+}
+
+.settings-page-content {
+  max-width: 800px;
+}
+
+/* Разделы настроек */
+.settings-section {
+  margin-bottom: 2.5rem;
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Опции настроек */
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-option:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.settings-option-info {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.settings-option-info h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+}
+
+.settings-option-info p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.settings-option-action {
+  flex-shrink: 0;
+}
+
+.settings-option-form {
+  flex: 1;
+  max-width: 100%;
+}
+
+/* Статистика */
+.settings-stats {
+  padding: 1rem 0;
+}
+
+.settings-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.settings-stat-card {
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.settings-stat-label {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.settings-stats-loading,
+.settings-stats-error {
+  text-align: center;
+  padding: 1rem;
+  color: var(--color-text-light);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .settings-page {
+    grid-template-columns: 1fr;
+  }
+  
+  .settings-page-main {
+    padding: 1rem;
+  }
+  
+  .settings-option {
+    flex-direction: column;
+  }
+  
+  .settings-option-info {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .settings-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

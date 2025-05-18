@@ -1,0 +1,100 @@
+/* Стили для компонента Input */
+
+.input-wrapper {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input-required {
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  background-clip: padding-box;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: 
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.input::placeholder {
+  color: var(--color-text-light);
+  opacity: 0.6;
+}
+
+/* Размеры поля ввода */
+.input-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.input-md {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+
+.input-lg {
+  padding: 0.75rem 1rem;
+  font-size: 1.125rem;
+  border-radius: var(--border-radius-md);
+}
+
+/* Состояние ошибки */
+.input-error {
+  border-color: var(--color-error);
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25);
+}
+
+.input-error-message {
+  font-size: 0.875rem;
+  color: var(--color-error);
+  margin-top: 0.25rem;
+}
+
+/* Состояние отключения */
+.input-disabled {
+  background-color: var(--color-background-dark);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Темная тема */
+[data-theme="dark"] .input {
+  background-color: var(--color-background-light);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .input:focus {
+  border-color: var(--color-primary-light);
+}
+
+[data-theme="dark"] .input-disabled {
+  background-color: var(--color-background-dark);
+}

@@ -1,0 +1,159 @@
+/* Стили для страниц аутентификации */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: var(--color-background-light);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.auth-header {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-dark);
+}
+
+.auth-subtitle {
+  color: var(--color-text-light);
+  margin-bottom: 0;
+}
+
+.auth-form {
+  padding: 1rem 2rem 2rem;
+}
+
+.auth-forgot-password {
+  text-align: right;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.auth-footer {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  background-color: var(--color-background-light);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Лого */
+.auth-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-logo img {
+  height: 40px;
+}
+
+/* Разделитель для социальной аутентификации */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--color-border);
+}
+
+.auth-divider::before {
+  margin-right: 1rem;
+}
+
+.auth-divider::after {
+  margin-left: 1rem;
+}
+
+/* Кнопки социальной аутентификации */
+.auth-social-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-social-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.auth-social-button:hover {
+  background-color: var(--color-background-dark);
+}
+
+.auth-social-button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Сообщение об ошибке */
+.auth-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* Сообщение об успехе */
+.auth-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-success);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 576px) {
+  .auth-card {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  
+  .auth-header,
+  .auth-form,
+  .auth-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .auth-footer {
+    background-color: transparent;
+    border-top: none;
+  }
+}

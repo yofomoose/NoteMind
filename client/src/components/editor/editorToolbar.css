@@ -1,0 +1,117 @@
+/* Стили для компонента EditorToolbar */
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-background-light);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.editor-toolbar-left,
+.editor-toolbar-center,
+.editor-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editor-toolbar-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Индикатор сохранения */
+.editor-toolbar-saving {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.editor-toolbar-saving-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-info);
+  animation: pulse 1.5s infinite;
+}
+
+.editor-toolbar-saved {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+/* Список подключенных пользователей */
+.editor-toolbar-users {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.editor-toolbar-user {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-background-light);
+  margin-left: -8px;
+  position: relative;
+}
+
+.editor-toolbar-user:first-child {
+  margin-left: 0;
+}
+
+.editor-toolbar-user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.editor-toolbar-user-initial {
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Анимация пульсации для индикатора сохранения */
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .editor-toolbar {
+    flex-wrap: wrap;
+    padding: 0.5rem;
+  }
+  
+  .editor-toolbar-center {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .editor-toolbar-saved {
+    display: none;
+  }
+}
