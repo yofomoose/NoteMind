@@ -36,6 +36,7 @@ services:
     volumes:
       - ./server:/app
       - /app/node_modules
+      - uploads_data:/app/uploads  # Исправляем на uploads_data
     ports:
       - "5000:5000"
     depends_on:
@@ -79,6 +80,8 @@ volumes:
   mongodb_data:
     driver: local
   redis_data:
+    driver: local
+  uploads_data:    # Добавляем том для загрузок
     driver: local
 
 # Определение сети

@@ -36,7 +36,7 @@ services:
     volumes:
       - ./server:/app:delegated
       - /app/node_modules
-      - uploads:/app/uploads    # Исправлено имя тома
+      - uploads_data:/app/uploads  # Исправляем на uploads_data
     environment:
       - NODE_ENV=${NODE_ENV:-development}
       - MONGO_URI=mongodb://mongodb:27017/notemind  # Исправлен URI для Docker
@@ -73,7 +73,7 @@ volumes:
     driver: local
   redis_data:
     driver: local
-  uploads_data:
+  uploads_data:    # Убедитесь, что имя тома совпадает с тем, что используется в сервисе
     driver: local
 
 # Определение сети
