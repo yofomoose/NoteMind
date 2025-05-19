@@ -267,6 +267,10 @@ install_and_run() {
   return 0
 }
 
+# Исправляем права на директории
+chmod -R 755 ./server/uploads
+chmod -R 755 ./server/logs
+
 # Запускаем основную функцию
 install_and_run
 

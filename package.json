@@ -4,9 +4,8 @@
   "description": "Современное приложение для заметок с совместным редактированием",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "server": "nodemon server/server.js",
-    "client": "npm start --prefix client",
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "install-all": "npm install && npm install --prefix client && npm install --prefix server",
     "build": "npm run build --prefix client",

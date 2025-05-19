@@ -5,8 +5,10 @@ const winston = require('winston');
 const path = require('path');
 const fs = require('fs');
 
-// Создание директории для логов, если она не существует
+// Используем path.join для кросс-платформенных путей
 const logDir = path.join(__dirname, '..', 'logs');
+
+// Создание директории для логов, если она не существует
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
