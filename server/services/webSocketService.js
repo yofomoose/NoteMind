@@ -3,8 +3,8 @@
  */
 const { Server } = require('socket.io');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
-const Note = require('../models/note');
+const User = require('../models/User');
+const Note = require('../models/Note');
 const { WS_EVENTS, NOTE_ACCESS_ROLES } = require('../../shared/constants');
 const config = require('../config/default');
 const logger = require('../utils/logger');
