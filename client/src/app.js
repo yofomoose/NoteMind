@@ -10,9 +10,9 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import Dashboard from './pages/Dashboard';
-import NotePage from './pages/NotePage';
+import NotePage from './pages/note-page';
 import NotFoundPage from './pages/NotFoundPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/profile-page';
 import SettingsPage from './pages/SettingsPage';
 
 // Компоненты
