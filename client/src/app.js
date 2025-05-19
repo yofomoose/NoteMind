@@ -3,20 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 
-// Страницы
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/Dashboard';
-import NotePage from './pages/NotePage';
-import ProfilePage from './pages/ProfilePage';
-import NotFoundPage from './pages/NotFoundPage';
-import SettingsPage from './pages/SettingsPage';
+// Pages
+import Dashboard from './pages/dashboard';
+import NotePage from './pages/notePage';
+import LoginPage from './pages/loginPage';
+import RegisterPage from './pages/registerPage';
+import ProfilePage from './pages/profilePage';
+import SettingsPage from './pages/settingsPage';
+import NotFoundPage from './pages/notFoundPage';
 
-// Компоненты
-import ProtectedRoute from './components/common/ProtectedRoute';
-import Toast from './components/common/Toast';
-
-// Стили
 import './App.css';
 
 function App() {
@@ -26,20 +21,19 @@ function App() {
         <Router>
           <div className="app">
             <Routes>
-              {/* Публичные маршруты */}
+              {/* Public routes */}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-
-              {/* Защищенные маршруты */}
-              <Route path="/" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-              <Route path="/notes/:id" element={<ProtectedRoute><NotePage /></ProtectedRoute>} />
-              <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-              <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
               
-              {/* 404 */}
+              {/* Protected routes */}
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/note/:id" element={<NotePage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              
+              {/* 404 page */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-            <Toast />
           </div>
         </Router>
       </AuthProvider>

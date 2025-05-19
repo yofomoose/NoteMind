@@ -27,12 +27,7 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: 'default.jpg'
-  },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
+    default: null
   }
 }, { 
   timestamps: true 
@@ -47,7 +42,7 @@ userSchema.pre('save', async function(next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// Проверка пароля
+// Сравнение паролей
 userSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
