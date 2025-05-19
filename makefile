@@ -1,8 +1,8 @@
 # Makefile для управления проектом NoteMind
 
 # Переменные
-DOCKER_COMPOSE = docker-compose
-DOCKER_COMPOSE_DEV = docker-compose -f docker-compose.dev.yml
+DOCKER_COMPOSE = docker compose
+DOCKER_COMPOSE_DEV = docker compose -f docker-compose.dev.yml
 
 # Запуск в режиме разработки
 dev:
