@@ -38,7 +38,7 @@ services:
       - /app/node_modules
       - uploads_data:/app/uploads  # Исправляем на uploads_data
     ports:
-      - "5000:5000"
+      - "0.0.0.0:5000:5000"
     depends_on:
       - mongodb
       - redis
@@ -51,6 +51,7 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - SOCKET_CORS_ORIGIN=http://localhost:3000
+      - HOST=0.0.0.0
     command: npm run dev
     networks:
       - notemind-network-dev
@@ -66,11 +67,12 @@ services:
       - ./client:/app
       - /app/node_modules
     ports:
-      - "3000:3000"
+      - "0.0.0.0:3000:3000"
     depends_on:
       - server
     environment:
-      - REACT_APP_API_URL=http://localhost:5000
+      - HOST=0.0.0.0
+      - REACT_APP_API_URL=http://${SERVER_HOST:-localhost}:5000
     command: npm start
     networks:
       - notemind-network-dev
