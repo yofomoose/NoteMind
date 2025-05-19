@@ -48,6 +48,13 @@ app.use(express.urlencoded({ extended: false }));
 // Статические файлы
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+  });
+}
+
 // Маршруты API
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
@@ -58,15 +65,6 @@ app.use('/api/files', require('./routes/files'));
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
-
-// Обслуживание клиентских файлов в продакшене
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
-  });
-}
 
 // Обработка ошибок
 app.use(errorHandler);

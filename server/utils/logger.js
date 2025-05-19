@@ -8,9 +8,12 @@ const fs = require('fs');
 // Используем path.join для кросс-платформенных путей
 const logDir = path.join(__dirname, '..', 'logs');
 
-// Создание директории для логов, если она не существует
+// Создаем директорию с правильными правами
 if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir, { recursive: true });
+  fs.mkdirSync(logDir, { 
+    recursive: true,
+    mode: 0o755 // Правильные права доступа для Linux
+  });
 }
 
 // Настройка форматов для логов
