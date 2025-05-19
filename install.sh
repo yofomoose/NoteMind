@@ -88,7 +88,7 @@ clone_repository() {
   
   # Запрос URL репозитория
   read -p "Введите URL репозитория (оставьте пустым для использования значения по умолчанию): " repo_url
-  repo_url=${repo_url:-"https://github.com/yourusername/notemind.git"}
+  repo_url=${repo_url:-"https://github.com/yofomoose/NoteMind.git"}
   
   # Запрос директории для клонирования
   read -p "Введите директорию для установки (оставьте пустым для использования './notemind'): " install_dir
