@@ -4,7 +4,7 @@
 # Используется для запуска через curl
 
 # Параметры
-REPO_URL="https://github.com/yourusername/notemind.git"
+REPO_URL="https://github.com/yofomoose/NoteMind.git"
 INSTALL_DIR="./notemind"
 MODE="dev"
 DETACHED="y"

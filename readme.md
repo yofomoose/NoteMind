@@ -98,7 +98,7 @@ make help
 
 1. Клонировать репозиторий:
 ```bash
-git clone https://github.com/yourusername/notemind.git
+git clone https://github.com/yofomoose/NoteMind.git
 cd notemind
 ```
 
